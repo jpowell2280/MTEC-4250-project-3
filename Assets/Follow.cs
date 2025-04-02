@@ -39,7 +39,6 @@ public class Follow : MonoBehaviour
         {
             Virus.GetComponent<Virus>().removeprogramtolist(gameObject);
             Target = collision.gameObject;
-            //isFollowing = false; //cease following the player
 
             GetComponent<Collider2D>().enabled = false;
             transform.position = Target.transform.position;
