@@ -38,7 +38,7 @@ public class Follow : MonoBehaviour
         if (collision.CompareTag("Goal"))
         {
             Virus.GetComponent<Virus>().removeprogramtolist(gameObject);
-            Target = collision.gameObject;
+            Target = collision.gameObject; //removes objects from player when entering the base
 
             GetComponent<Collider2D>().enabled = false;
             transform.position = Target.transform.position;
@@ -46,9 +46,9 @@ public class Follow : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            if (Target == null)
+            if (Target == null) //if there is no target(program)
             {
-                Target = Virus.GetComponent<Virus>().GetTarget();
+                Target = Virus.GetComponent<Virus>().GetTarget(); //then the player(virus) will receive it
             }
            
             Virus.GetComponent<Virus>().addprogramtolist(gameObject); //objects will follow behind each other
