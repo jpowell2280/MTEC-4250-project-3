@@ -40,6 +40,9 @@ public class Follow : MonoBehaviour
             Virus.GetComponent<Virus>().removeprogramtolist(gameObject);
             Target = collision.gameObject;
             //isFollowing = false; //cease following the player
+
+            GetComponent<Collider2D>().enabled = false;
+            transform.position = Target.transform.position;
         }
 
         if (collision.CompareTag("Player"))
@@ -49,10 +52,9 @@ public class Follow : MonoBehaviour
                 Target = Virus.GetComponent<Virus>().GetTarget();
             }
            
-            Virus.GetComponent<Virus>().addprogramtolist(gameObject);
+            Virus.GetComponent<Virus>().addprogramtolist(gameObject); //objects will follow behind each other
             isFollowing = true; //follows upon player contact
-            GetComponent<Collider2D>().enabled = false;
-            transform.position = Target.transform.position;
+            
         }
     }
 }
