@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    public GameObject Target;    
+    public GameObject Target; //declare Target   
     public GameObject Virus; //define what the object will follow
     public float Dis; //distance
     bool isFollowing = false; //following is false
@@ -19,9 +19,11 @@ public class Follow : MonoBehaviour
         if (isFollowing)
         {
             Dis = Vector2.Distance(transform.position, Target.transform.position);
+            //the distance between the object and target
             //object position, target position
 
-            if (Dis >= 1.2) //prevents the object from overlapping the target
+            if (Dis >= 1.2) //keeps the object at a certain distance
+                            //prevents the object from overlapping the target
             {
                 transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, 5 * Time.deltaTime);
                 //object position, target position, speed
@@ -49,6 +51,8 @@ public class Follow : MonoBehaviour
            
             Virus.GetComponent<Virus>().addprogramtolist(gameObject);
             isFollowing = true; //follows upon player contact
+            GetComponent<Collider2D>().enabled = false;
+            transform.position = Target.transform.position;
         }
     }
 }
